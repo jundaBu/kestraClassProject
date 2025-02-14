@@ -4,6 +4,7 @@
 
         <el-select
             ref="select"
+
             v-model="current"
             value-key="label"
             :placeholder="props.placeholder ?? t('filters.label')"
@@ -255,6 +256,7 @@
     const handleClear = () => {
     if (current.value.length > 0) {
         current.value = [...current.value]; // Keeps existing selections reactive
+        persistent.value= [...persistent.value];
     }
 };
 
@@ -335,6 +337,7 @@
 
             // Ensure selected tags persist by forcing reactivity
         current.value = [...current.value]; 
+        persistent.value = [...persistent.value];    
             
             // If last filter item selection was not completed, remove it from array
             if (current.value?.at(-1)?.value?.length === 0) current.value.pop();
